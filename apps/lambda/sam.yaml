@@ -2,16 +2,14 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: >-
   Amazon API Gateway.
-Globals:
-  Api:
-    EndpointConfiguration: REGIONAL
 Resources:
   GreetingFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: org.aws.samples.compute.greeting.GreetingHandler::handleRequest
       Runtime: java8
-      CodeUri: ../../services/greeting/target/greeting.zip
+#      CodeUri: ../../services/greeting/target/greeting.zip
+      CodeUri: ../../../microservices-greeting/target/greeting.zip
       Description: >-
         Amazon API Gateway.
       MemorySize: 1024
@@ -27,6 +25,7 @@ Resources:
   GreetingApi:
     Type: AWS::Serverless::Api
     Properties:
+#      EndpointConfiguration: REGIONAL
       StageName: prod
       DefinitionBody:
         swagger: "2.0"
@@ -48,7 +47,8 @@ Resources:
     Properties:
       Handler: org.aws.samples.compute.name.NameHandler::handleRequest
       Runtime: java8
-      CodeUri: ../../services/name/target/name.zip
+#      CodeUri: ../../services/name/target/name.zip
+      CodeUri: ../../../microservices-name/target/name.zip
       Description: >-
         Amazon API Gateway.
       MemorySize: 1024
@@ -70,6 +70,7 @@ Resources:
   NamesApi:
     Type: AWS::Serverless::Api
     Properties:
+#      EndpointConfiguration: REGIONAL
       StageName: prod
       DefinitionBody:
         swagger: "2.0"
@@ -122,7 +123,8 @@ Resources:
     Properties:
       Handler: org.aws.samples.compute.webapp.WebappHandler::handleRequest
       Runtime: "java8"
-      CodeUri: ../../services/webapp/target/webapp.zip
+#      CodeUri: ../../services/webapp/target/webapp.zip
+      CodeUri: ../../../microservices-webapp/target/webapp.zip
       Description: >-
         Amazon API Gateway.
       MemorySize: 1024
@@ -154,6 +156,7 @@ Resources:
   WebAppApi:
     Type: AWS::Serverless::Api
     Properties:
+#      EndpointConfiguration: REGIONAL
       StageName: prod
       DefinitionBody:
         swagger: "2.0"
